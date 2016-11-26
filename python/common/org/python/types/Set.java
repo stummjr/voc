@@ -401,24 +401,28 @@ public class Set extends org.python.types.Object {
     }
 
     @org.python.Method(
-        __doc__ = ""
+        __doc__ = "Return True if two sets have a null intersection.",
+        args = {"other"}
     )
     public org.python.Object isdisjoint(org.python.Object other) {
-        throw new org.python.exceptions.NotImplementedError("isdisjoint() has not been implemented.");
+        return new Bool( ((Int) this.intersection(other).__len__()).value == 0) ;
     }
 
     @org.python.Method(
-        __doc__ = ""
+        __doc__ = "Report whether another set contains this set.",
+        args = {"other"}
     )
     public org.python.Object issubset(org.python.Object other) {
-        throw new org.python.exceptions.NotImplementedError("issubset() has not been implemented.");
+        return new Bool( ((java.util.Set) other.toJava()).containsAll((java.util.Set) this.toJava()) );
     }
 
     @org.python.Method(
-        __doc__ = ""
+        __doc__ = "Report whether this set contains another set.",
+        args = {"other"}
     )
     public org.python.Object issuperset(org.python.Object other) {
-        throw new org.python.exceptions.NotImplementedError("issuperset() has not been implemented.");
+        return new Bool( ((java.util.Set) this.toJava()).containsAll((java.util.Set) other.toJava()) );
+
     }
 
     @org.python.Method(

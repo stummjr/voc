@@ -163,6 +163,31 @@ class SetTests(TranspileTestCase):
             print(x)
             """)
 
+    def test_isdisjoint(self):
+        self.assertCodeExecution("""
+            x = {1, 2, 3}
+            y = {3, 4, 5}
+            print(x.isdisjoint(y))
+            y = {4, 5}
+            print(x.isdisjoint(y))
+            """)
+
+    def test_issubset(self):
+        self.assertCodeExecution("""
+            x = {1, 2}
+            y = {1, 2, 3}
+            print(x.issubset(y))
+            print(y.issubset(x))
+            """)
+
+    def test_issuperset(self):
+        self.assertCodeExecution("""
+            x = {1, 2, 3}
+            y = {1, 2}
+            print(x.issuperset(y))
+            print(y.issuperset(x))
+            """)
+
 
 class UnarySetOperationTests(UnaryOperationTestCase, TranspileTestCase):
     data_type = 'set'
